@@ -19,19 +19,6 @@ Technologies
 - PDF Generation: pdfMake
 - Styling: Tailwind CSS
 
-Project Structure
-
-Checklist-Project/
-|__ client/                  # Frontend React app
-|   |__ public/              # Public assets
-|   |__ src/                 # React source code
-|   |__ package.json         # Frontend dependencies and scripts
-|__ server/                  # Backend Express app
-|   |__ src/                 # Backend source code
-|   |__ package.json         # Backend dependencies and scripts
-|__ .env                     # Environment variables
-|__ README.md                # This file
-
 Prerequisites
 
 - Node.js (v14 or later)
