@@ -45,13 +45,9 @@ Backend (Server)
 
     cd server
 
-2. Install the required packages:
-
-    npm install
-
-3. Create a `.env` file in the `server` directory to configure your environment variables (e.g., database connection details).
-
-4. Run the backend server:
+2. Create a `.env` file in the `server` directory to configure your environment variables (e.g., database connection details like shown in .env.example file).
+   
+3. Install the required packages and start the server :
 
     npm run dev
 
@@ -61,31 +57,6 @@ Frontend (Client)
 
     cd client
 
-2. Install the required packages:
-
-    npm install
-
-3. Set the environment variable to change the default React port:
-
-    Create a `.env` file in the `client` directory with the following content:
-
-    PORT=5173
-
-4. Run the frontend server:
+2. Install the required packages and run frontend :
 
     npm start
-
-Running Both Servers
-
-You can run both frontend and backend servers concurrently using [concurrently](https://www.npmjs.com/package/concurrently). Install it in the `server` folder:
-
-npm install concurrently
-
-Then, modify the `server/package.json` to add a script for running both servers:
-
-```json
-"scripts": {
-  "dev": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "nodemon ./src/index.js",
-  "client": "npm start --prefix ../client"
-}
