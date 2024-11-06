@@ -22,15 +22,15 @@ Technologies
 Project Structure
 
 Checklist-Project/
-├── client/                  # Frontend React app
-│   ├── public/              # Public assets
-│   ├── src/                 # React source code
-│   ├── package.json         # Frontend dependencies and scripts
-├── server/                  # Backend Express app
-│   ├── src/                 # Backend source code
-│   ├── package.json         # Backend dependencies and scripts
-├── .env                     # Environment variables
-├── README.md                # This file
+|__ client/                  # Frontend React app
+|   |__ public/              # Public assets
+|   |__ src/                 # React source code
+|   |__ package.json         # Frontend dependencies and scripts
+|__ server/                  # Backend Express app
+|   |__ src/                 # Backend source code
+|   |__ package.json         # Backend dependencies and scripts
+|__ .env                     # Environment variables
+|__ README.md                # This file
 
 Prerequisites
 
