@@ -75,7 +75,6 @@ export const createQuestion = async (req, res) => {
     }
 
     const categoryID = categoryResult.rows[0].categoryid;
-    console.log(categoryID);
 
     // Insert the new question into the questions table
     const questionResult = await client.query(
