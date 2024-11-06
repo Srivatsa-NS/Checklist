@@ -1,0 +1,27 @@
+{
+  "name": "checklist",
+  "version": "1.0.0",
+  "description": "A checklist app to categorize the checklists created and view the checklist only that are assigned to the logged in user",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm i && nodemon ./index.js"
+  },
+  "author": "Srivatsa",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1",
+    "pdfkit": "^0.15.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7"
+  }
+}
