@@ -104,7 +104,7 @@ const CreateNew = () => {
         }
       );
 
-      if (typeof userResponse.data.userId == "undefined") {
+      if (userResponse.data.userId === 0) {
         // If no user is found with that name
         setErrorMessage("Invalid Assignee");
         return;
