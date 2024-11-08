@@ -232,7 +232,7 @@ const CreateNew = () => {
             className="block text-lg font-semibold mt-4 mb-2"
             htmlFor="assignedTo"
           >
-            Assigned To
+            Assignee
           </label>
           <input
             id="assignedTo"
@@ -240,7 +240,7 @@ const CreateNew = () => {
             value={assignedTo}
             onChange={handleAssignedToChange}
             className="w-full p-2 border rounded"
-            placeholder="Enter person assigned to"
+            placeholder="Enter asignee name"
             required
           />
 
