@@ -29,6 +29,10 @@ function Category({
 
   // Handle creating a new category
   const handleCreateNewCategory = async () => {
+    if(!newCategoryName) {
+        setErrorMessage("Category name can't be empty")
+        return
+    }
     try {
       const response = await axios.post(
         "http://localhost:3000/api/categories",
