@@ -139,17 +139,31 @@ const ChecklistPage = () => {
 
   return (
     <div className="container mx-auto p-6 flex flex-col min-h-screen">
-      <div className="flex justify-between items-center">
-        <h2 className="text-6xl font-bold text-center mb-6">Your Checklist</h2>
+      <div className="flex justify-center items-center mb-4">
+        <h2 className="text-6xl font-bold text-center mx-auto">
+          Your Checklist
+        </h2>
+      </div>
+
+      <div className="flex justify-center mb-6 mt-6">
+        <button
+          onClick={() => navigate("/assigned-by-me")}
+          className="px-4 py-2 bg-indigo-600 text-white text-xl rounded-lg hover:bg-indigo-700"
+        >
+          Assigned by me &gt;
+        </button>
+      </div>
+
+      <div className="flex justify-center mt-6">
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="px-4 py-2 bg-gray-800 text-white rounded-lg"
+            className="px-4 py-2 bg-gray-800 text-white text-xl rounded-lg"
           >
             Download as
           </button>
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg w-48">
+            <div className="absolute mt-2 bg-white border rounded-lg shadow-lg w-48">
               <button
                 onClick={handleDownloadPdf}
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"

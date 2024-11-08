@@ -33,7 +33,7 @@ const Login = () => {
         setError("");
         setSuccessMessage("Login Successful");
         setTimeout(() => {
-          navigate("/checklist");
+          navigate("/my-checklist");
         }, 2000);
       }
     } catch (err) {

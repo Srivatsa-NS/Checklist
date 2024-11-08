@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/checklist" element={<ChecklistPage />} />
+        <Route path="/my-checklist" element={<ChecklistPage />} />
         <Route path="/create" element={<CreateNew />} />
       </Routes>
     </div>
