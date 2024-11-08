@@ -29,11 +29,6 @@ function Category({
 
   // Handle creating a new category
   const handleCreateNewCategory = async () => {
-    if (!newCategoryName) {
-      setErrorMessage("Enter a valid category name");
-      return; // Don't submit if input is empty
-    }
-
     try {
       const response = await axios.post(
         "http://localhost:3000/api/categories",

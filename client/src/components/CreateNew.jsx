@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../contexts/userContexts.js";
 import Category from "./Category.jsx";
+import Question from "./Question.jsx";
+import Assignee from "./Assignee.jsx";
 
 const CreateNew = () => {
   const [categories, setCategories] = useState([]);
@@ -111,37 +113,14 @@ const CreateNew = () => {
 
       {selectedCategory && (
         <div className="mt-6">
-          <label
-            className="block text-lg font-semibold mb-2"
-            htmlFor="question"
-          >
-            Question
-          </label>
-          <textarea
-            id="question"
-            value={question}
-            onChange={handleQuestionChange}
-            className="w-full p-2 border rounded"
-            maxLength="500"
-            placeholder="Enter your question here"
-            rows="4"
-            required
+          <Question
+            question={question}
+            handleQuestionChange={handleQuestionChange}
           />
 
-          <label
-            className="block text-lg font-semibold mt-4 mb-2"
-            htmlFor="assignedTo"
-          >
-            Assignee
-          </label>
-          <input
-            id="assignedTo"
-            type="text"
-            value={assignedTo}
-            onChange={handleAssignedToChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter asignee name"
-            required
+          <Assignee
+            assignedTo={assignedTo}
+            handleAssignedToChange={handleAssignedToChange}
           />
 
           {errorMessage && (
