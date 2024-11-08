@@ -96,10 +96,6 @@ const CreateNew = () => {
     if (!userID) setUserID(localStorage.getItem("userID"));
   }, [userID]);
 
-  useEffect(() => {
-    if (!userID) setUserID(localStorage.getItem("userID"));
-  }, [userID]);
-
   return (
     <form
       className="p-4 border rounded-lg max-w-md mx-auto mt-10"
