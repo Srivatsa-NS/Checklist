@@ -41,6 +41,7 @@ const CreateNew = () => {
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
     setErrorMessage("");
+    setIsCreatingNewCategory(false);
   };
 
   // Handle new category input change
