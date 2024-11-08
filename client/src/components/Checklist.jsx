@@ -207,7 +207,7 @@ const ChecklistPage = () => {
           onClick={() => navigate("/create")}
           className="px-6 py-4 bg-green-500 text-white rounded-xl hover:bg-white hover:text-green-500 hover:shadow-xl duration-500"
         >
-          Create New Checklist
+          Create new question
         </button>
       </div>
     </div>

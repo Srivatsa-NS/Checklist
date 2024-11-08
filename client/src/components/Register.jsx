@@ -124,7 +124,7 @@ const Register = () => {
           <p className="text-green-500 my-10 text-center">{successMessage}</p>
         )}
 
-        <button type="submit" className="bg-blue-500 text-white p-2 w-full">
+        <button type="submit" className="bg-blue-500 text-white p-2 w-full hover:bg-white hover:text-blue-500 hover:shadow-xl duration-500 rounded-lg">
           Register
         </button>
       </form>

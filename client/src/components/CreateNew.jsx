@@ -40,6 +40,7 @@ const CreateNew = () => {
   // Handle category selection change
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
+    setErrorMessage("");
   };
 
   // Handle new category input change
@@ -49,7 +50,10 @@ const CreateNew = () => {
 
   // Handle creating a new category
   const handleCreateNewCategory = async () => {
-    if (!newCategoryName) return; // Don't submit if input is empty
+    if (!newCategoryName) {
+      setErrorMessage("Enter a valid category name");
+      return; // Don't submit if input is empty
+    }
 
     try {
       const response = await axios.post(
@@ -250,6 +254,10 @@ const CreateNew = () => {
             </div>
           )}
         </div>
+      )}
+
+      {!selectedCategory && errorMessage && (
+        <div className="text-red-500 mt-2 text-center mt-8">{errorMessage}</div>
       )}
 
       {selectedCategory && (
