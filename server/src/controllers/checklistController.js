@@ -59,45 +59,56 @@ export const getQuestionsByUserId = async (req, res) => {
   }
 };
 
-// API to create a new question in existing or a new category
 export const createQuestion = async (req, res) => {
-  const { question, categoryName, assignedBy, assignedTo } = req.body;
+  const { questions } = req.body; // Expecting an array of questions in the request body
+
+  // Validate input: Ensure questions is an array and contains at least one question
+  if (!Array.isArray(questions) || questions.length === 0) {
+    return res.status(400).json({ message: "Questions must be an array and cannot be empty" });
+  }
 
   try {
-    // Fetch the category ID based on the category name
-    const categoryResult = await client.query(
-      "SELECT categoryID FROM categories WHERE name = $1",
-      [categoryName]
-    );
+    const createdQuestions = [];
 
-    if (categoryResult.rows.length === 0) {
-      return res.status(404).json({ message: "Category not found" });
+    for (const questionData of questions) {
+      const { question, categoryName, assignedBy, assignedTo } = questionData;
+
+      // Fetch the category ID based on the category name
+      const categoryResult = await client.query(
+        "SELECT categoryID FROM categories WHERE name = $1",
+        [categoryName]
+      );
+
+      if (categoryResult.rows.length === 0) {
+        return res.status(404).json({ message: `Category ${categoryName} not found` });
+      }
+
+      const categoryID = categoryResult.rows[0].categoryid;
+
+      // Insert the new question into the questions table
+      const questionResult = await client.query(
+        "INSERT INTO questions (question, categoryID, assignedBY) VALUES ($1, $2, $3) RETURNING questionID",
+        [question, categoryID, assignedBy]
+      );
+
+      const questionID = questionResult.rows[0].questionid;
+
+      // Insert a corresponding response into the responses table
+      await client.query(
+        "INSERT INTO responses (questionID, assignedTo) VALUES ($1, $2)",
+        [questionID, assignedTo]
+      );
+
+      createdQuestions.push({ questionID, message: "Question created successfully" });
     }
 
-    const categoryID = categoryResult.rows[0].categoryid;
-
-    // Insert the new question into the questions table
-    const questionResult = await client.query(
-      "INSERT INTO questions (question, categoryID, assignedBY) VALUES ($1, $2, $3) RETURNING questionID",
-      [question, categoryID, assignedBy]
-    );
-
-    const questionID = questionResult.rows[0].questionid;
-
-    // Insert a corresponding response into the responses table
-    await client.query(
-      "INSERT INTO responses (questionID, assignedTo) VALUES ($1, $2)",
-      [questionID, assignedTo]
-    );
-
-    res
-      .status(201)
-      .json({ message: "Question created successfully", questionID });
+    res.status(201).json({ message: "Questions created successfully", createdQuestions });
   } catch (error) {
-    console.error("Error creating question:", error);
+    console.error("Error creating questions:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage }).single("picture");

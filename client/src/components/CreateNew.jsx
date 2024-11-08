@@ -65,7 +65,7 @@ const CreateNew = () => {
       questions.some((q) => !q.question) ||
       !assignedTo
     ) {
-      alert("Please fill out all required fields.");
+      setErrorMessage("Please fill out all required fields.");
       return;
     }
 
@@ -97,7 +97,7 @@ const CreateNew = () => {
 
       const response = await axios.post(
         "http://localhost:3000/api/checklist/create",
-        questionData
+        { questions: questionData }
       );
 
       if (response.status === 201) {
