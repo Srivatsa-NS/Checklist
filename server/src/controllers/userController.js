@@ -83,10 +83,11 @@ export const getUserByName = async (req, res) => {
     const result = await client.query(query, [name]);
 
     let requestedId = 0;
-
+    
     if(result.rowCount>0){
       requestedId = result.rows[0].userid;
     }
+
 
     if (result.length === 0) {
       return res.status(404).json({ message: "User not found" });
